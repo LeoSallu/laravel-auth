@@ -13,7 +13,7 @@
                     <th>Description</th>
                     <th>Project owner</th>
                     <th>Project contributors</th>
-                    <th>Languages</th>
+                    <th colspan="4">Languages</th>
                 </tr>
             </thead>
             <tbody>

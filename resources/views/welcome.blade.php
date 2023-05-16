@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Welcome to the Laravel Boostrap Auth Template') }}</div>
+                <div class="card-header">{{ __('Portfolio Dashboard') }}</div>
 
-                <div class="card-body">
+                <div class="card-body d-flex justify-content-center p-3">
                     <a class="btn btn-danger" href="{{route('projects.index')}}">Go to my Portfolio</a>
                 </div>
             </div>
