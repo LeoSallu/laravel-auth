@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Welcome to the Laravel Boostrap Auth Template') }}</div>
 
                 <div class="card-body">
-                    Click on login or register in the menu to get started :)
+                    <a class="btn btn-danger" href="{{route('projects.index')}}">Go to my Portfolio</a>
                 </div>
             </div>
         </div>
