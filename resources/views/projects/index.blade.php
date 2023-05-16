@@ -23,6 +23,7 @@
                         <td>{{$project->owner}}</td>
                         <td>{{$project->contributors}}</td>
                         <td>{{$project->languages}}</td>
+                        <td><a href="{{ route('projects.show', $project->id) }}" class="btn btn-success">Info</a></td>
                     </tr>
                 @endforeach
             </tbody>
