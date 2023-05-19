@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -41,6 +42,9 @@ class ProjectController extends Controller
         $data = $request->validated();
         $newProject = new Project();
         $newProject->fill($data);
+        if (isset($data['image'])) {
+            $newProject->image = Storage::put('uploads', $data['image']);
+        }
         $newProject->save();
         return to_route('projects.index');
     }
@@ -77,6 +81,19 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
+        if(empty($data['set_image'])){
+            if($project->image){
+                Storage::delete($project->image);
+                $project->image = null;
+            }
+        } else {
+            if (isset($data['image'])) {
+                if($project->image){
+                    Storage::delete($project->image);
+                }
+                $project->image = Storage::put('uploads', $data['image']);
+            }
+        }
         $project->update($data);
         return to_route('projects.index');
     }
@@ -88,7 +105,10 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)
-    {
+    {   
+        if($project->image){
+            Storage::delete($project->image);
+        }
         $project->delete();
         return to_route('projects.index');
     }

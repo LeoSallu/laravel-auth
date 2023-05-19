@@ -28,7 +28,9 @@ class UpdateProjectRequest extends FormRequest
             'description'=>'nullable|string',
             'owner'=>'required|max:30',
             'contributors'=>'nullable|string|max:30',
-            'languages'=>'nullable|string|max:20'
+            'languages'=>'nullable|string|max:20',
+            'image'=>'nullable|image',
+            'set_image' => 'boolean'
         ];
     }
 }

@@ -11,9 +11,9 @@
         </ul>
     </div>
     @endif
-    <form action="{{ route('projects.update',$project->id) }}" method="POST">
+    <form action="{{ route('projects.update',$project->id) }}" method="POST" enctype="multipart/form-data" class="form-input-image">
         @csrf
-        @method('PATCH')
+        @method('PUT')
         <div class="mb-3">
           <label for="name" class="form-label">Project Name</label>
           <input type="text" class="form-control" id="name" name="name" value="{{ old('name'), $project->name }}">
@@ -33,6 +33,10 @@
         <div class="mb-3">
             <label for="languages" class="form-label">Languages</label>
             <input type="text" class="form-control" id="languages" name="languages" value="{{ old('languages',$project->languages) }}">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input class="form-control" type="file" id="image" name="image">
         </div>
         <button type="submit" class="btn btn-danger">Submit</button>
       </form>    
